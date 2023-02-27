@@ -119,19 +119,20 @@
   <main class="hoc container clear">
     <!-- main body -->
     <section id="introblocks">
-      <ul class="nospace group btmspace-80">
-
+      <ul class="nav flex-column">
+        {% for i in pr %}
         <li class="one_third">
-          <figure><a  class="imgover" href="#"><img src="" style="height:250px; width:250px" alt=""></a>
+          <figure><a  class="imgover" href="#"><img src="{{i.image.url}}" style="height:250px; width:250px" alt="{{i.name}}"></a>
             <figcaption>
-              <h6 class="heading"></h6>
-              <p></p><br>
+              <h4 class="card-body" >{{i.name}}</h4>
 
-                <p></p>
+              <p>{{i.desc}}</p><br>
+
+                <p>Price : {{i.price}}</p>
             </figcaption>
           </figure>
         </li>
-
+    {% endfor %}
 
       </ul>
     </section>
