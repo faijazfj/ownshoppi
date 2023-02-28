@@ -1,6 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import render,get_object_or_404
 from .models import *
+from django.core.paginator import Paginator,InvalidPage,EmptyPage
 
 # Create your views here.
 
@@ -14,8 +15,17 @@ def index(request,c_slug=None):
     else:
         prodt = Products.objects.all().filter(available=True)
     cat = categ.objects.all()
+    paginator = Paginator(prodt,4)
+    try:
+        page = int(request.GET.get('page','1'))
+    except:
+        page = 1
+    try:
+        pro = paginator.page(page)
+    except (EmptyPage,InvalidPage):
+        pro = paginator.page(paginator.num_pages)
 
-    return render(request,'index.html',{'pr':prodt,'ct':cat})
+    return render(request,'index.html',{'pr':prodt,'ct':cat,'pg':pro})
 
 def prodDetails(request,c_slug,product_slug):
     try:

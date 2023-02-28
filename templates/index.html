@@ -120,7 +120,7 @@
     <!-- main body -->
     <section id="introblocks">
       <ul class="nav flex-column">
-        {% for i in pr %}
+        {% for i in pg.object_list %}
         <li class="one_third">
           <figure><a  class="imgover" href="{{i.get_url}}"><img src="{{i.image.url}}" style="height:250px; width:250px" alt="{{i.name}}"></a>
             <figcaption>
@@ -136,7 +136,13 @@
 
       </ul>
     </section>
+    <center>
+ {% for p in pg.paginator.page_range %}
 
+    <a href="?page={{p}}" class="btn btn-light btn-sm {% if pg.number == p %}active {% endif%} ">{{p}}</a>
+    {% endfor %}
+
+      </center>
     <hr class="btmspace-80">
 
     <div class="clear"></div>
