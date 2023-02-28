@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render,get_object_or_404
 from .models import *
 
@@ -23,4 +24,15 @@ def prodDetails(request,c_slug,product_slug):
     except Exception as e:
         raise e
     return render(request,'item.html',{'pr':prod})
+
+def searching(request):
+    query=None
+    prod=None
+
+    if 'q' in request.GET:
+        query =request.GET.get('q')
+        prod = Products.objects.all().filter(Q(name__contains=query)|Q(desc__contains=query))
+
+    return render(request,'search.html',{'pr':prod,'q':query})
+
 
