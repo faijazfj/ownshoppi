@@ -117,10 +117,10 @@ span.price {
 
   <div class="col-25">
     <div class="container">
-
-		<a href=""><i class="fa fa-trash-o" style="font-size:24px"> &nbsp; </i></a>
-        <a href=""><img src="" alt="" style="height:70px; width:100px">
-      <p> </a> <span class="price">Rs:<br><a href=""><i class="fa fa-plus" style="font-size:10px"></i></a>&nbsp;&nbsp;<a href=""> <i class="fa fa-minus" style="font-size:10px"></i></a></span></p>
+    {% for i in ci %}
+		<a href="{% url 'remove' i.prodt.id %}"><i class="fa fa-trash-o" style="font-size:24px"> &nbsp; </i></a>
+        <a href=""><img src="{{i.prodt.image.url}}" alt="{{i.prodt.name}}" style="height:70px; width:100px">
+      <p>{{i.prodt.name}} </a> <span class="price">Rs:{{i.total}}<br><a href="{% url 'add' i.prodt.id %}"><i class="fa fa-plus" style="font-size:10px"></i></a>&nbsp; {{i.quan}}&nbsp; <a href="{% url 'decrement' i.prodt.id %}"> <i class="fa fa-minus" style="font-size:10px"></i></a></span></p>
 		<p>Rs.  x 1</p>
 		<p> Qty </p>
 

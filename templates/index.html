@@ -122,10 +122,10 @@
       <ul class="nav flex-column">
         {% for i in pg.object_list %}
         <li class="one_third">
-          <figure><a  class="imgover" href="{{i.get_url}}"><img src="{{i.image.url}}" style="height:250px; width:250px" alt="{{i.name}}"></a>
-            <figcaption>
-              <h4 class="card-body" >{{i.name}}</h4>
+          <figure><a  class="imgover" href="{{i.get_url}}"><img src="{{i.image.url}}" style="height:250px; width:250px" alt="{{i.name}}">
 
+              <h4 class="card-body" >{{i.name}}</h4></a>
+          <figcaption>
               <p>{{i.desc}}</p><br>
 
                 <p>Price : {{i.price}}</p>

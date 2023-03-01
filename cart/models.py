@@ -13,3 +13,6 @@ class CartItems(models.Model):
     quan = models.IntegerField()
     active = models.BooleanField(default=True)
 
+    def total(self):
+        return self.prodt.price*self.quan
+

@@ -37,7 +37,7 @@ https://templatemo.com/tm-544-comparto
                     {% if pr.stock <= 0 %}
                     <h1 style="color:red">Stock Not available</h1>
                     {% else %}
-                    <a href="#services" class="tm-btn tm-btn-1 tm-link-to-services">Add cart</a>
+                    <a href="{% url 'add' pr.id %}" class="tm-btn tm-btn-1 tm-link-to-services">Add cart</a>
                     {% endif %}
                 </article>
             </div>
